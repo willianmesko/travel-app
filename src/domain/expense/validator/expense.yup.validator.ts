@@ -1,37 +1,36 @@
 import ValidatorInterface from "../../@shared/validator/validator.interface";
-
+import Expense from "../entity/expense";
 import * as yup from "yup";
-import Travel from "../entity/travel";
 
-export default class TravelYupValidator implements ValidatorInterface<Travel> {
-  validate(entity: Travel): void {
+export default class ExpenseYupValidator
+  implements ValidatorInterface<Expense>
+{
+  validate(entity: Expense): void {
     try {
       yup
         .object()
         .shape({
           id: yup.string().required("Id is required"),
+          travel_id: yup.string().required("Travel id is required"),
           title: yup.string().required("Title is required"),
-          destination: yup.string().required("Destination is required"),
-          user_id: yup.string().required("user_id is required"),
-          start_date: yup.date().notRequired(),
-          end_date: yup.date().notRequired(),
+          price: yup.number().required("Price is required"),
+          date: yup.date().notRequired(),
+          category: yup.string().notRequired(),
         })
         .validateSync(
           {
             id: entity.id,
+            travel_id: entity.travel_id,
             title: entity.title,
-            destination: entity.destination,
-            user_id: entity.user_id,
+            price: entity.price,
           },
-          {
-            abortEarly: false,
-          }
+          { abortEarly: false }
         );
     } catch (errors) {
       const e = errors as yup.ValidationError;
       e.errors.forEach((error) => {
         entity.notification.addError({
-          context: "Travel",
+          context: "Expense",
           message: error,
         });
       });
