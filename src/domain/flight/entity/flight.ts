@@ -33,10 +33,9 @@ export default class Flight extends Entity {
     this._date = date;
     this._reference_url = reference_url;
     this.validate();
+
     if (this.notification.hasErrors()) {
-      if (this.notification.hasErrors()) {
-        throw new NotificationError(this.notification.getErrors());
-      }
+      throw new NotificationError(this.notification.getErrors());
     }
   }
 
