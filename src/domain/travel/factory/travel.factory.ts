@@ -5,19 +5,12 @@ import Travel from "../entity/travel";
 export default class TravelFactory {
   public static create(
     title: string,
-    user_id: string,
+    userId: string,
     destination: string,
     start_date?: Date,
     end_date?: Date
   ): Travel {
-    return new Travel(
-      uuid(),
-      title,
-      destination,
-      user_id,
-      start_date,
-      end_date
-    );
+    return new Travel(uuid(), title, destination, userId, start_date, end_date);
   }
 
   public static createWith(name: string): void {

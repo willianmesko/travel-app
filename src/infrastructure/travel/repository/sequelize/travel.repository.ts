@@ -7,6 +7,10 @@ export default class TravelRepository implements TravelRepositoryInterface {
     await TravelModel.create({
       id: entity.id,
       title: entity.title,
+      destination: entity.destination,
+      user_id: "",
+      start_date: entity.start_date,
+      end_date: entity.end_date,
     });
   }
 
@@ -36,7 +40,14 @@ export default class TravelRepository implements TravelRepositoryInterface {
       throw new Error("Travel not found");
     }
 
-    const travel = new Travel(id, travelModel.title);
+    const travel = new Travel(
+      id,
+      travelModel.title,
+      travelModel.destination,
+      travelModel.user_id,
+      travelModel.start_date,
+      travelModel.end_date
+    );
 
     return travel;
   }
@@ -45,7 +56,14 @@ export default class TravelRepository implements TravelRepositoryInterface {
     const travelModels = await TravelModel.findAll();
 
     const trips = travelModels.map((travelModel) => {
-      const travel = new Travel(travelModel.id, travelModel.title);
+      const travel = new Travel(
+        travelModel.id,
+        travelModel.title,
+        travelModel.destination,
+        travelModel.user_id,
+        travelModel.start_date,
+        travelModel.end_date
+      );
 
       return travel;
     });
