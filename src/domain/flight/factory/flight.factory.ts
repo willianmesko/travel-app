@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 
 export default class FlightFactory {
   static create(
+    travel_id: string,
     title: string,
     from: string,
     to: string,
@@ -12,8 +13,10 @@ export default class FlightFactory {
     airline?: string,
     reference_url?: string
   ): Flight {
+    console.log("here", travel_id);
     return new Flight(
       uuid(),
+      travel_id,
       title,
       from,
       to,

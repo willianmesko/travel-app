@@ -44,6 +44,18 @@ export default class Expense extends Entity {
     return this._title;
   }
 
+  get category(): string {
+    return this._category;
+  }
+
+  get reference_url(): string {
+    return this._reference_url;
+  }
+
+  get date(): Date {
+    return this._date;
+  }
+
   get price(): number {
     return this._price;
   }

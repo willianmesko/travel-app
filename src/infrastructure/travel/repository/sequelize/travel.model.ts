@@ -1,4 +1,15 @@
-import { Table, Model, PrimaryKey, Column } from "sequelize-typescript";
+import {
+  Table,
+  Model,
+  PrimaryKey,
+  Column,
+  BelongsTo,
+  ForeignKey,
+  HasMany,
+} from "sequelize-typescript";
+import Flight from "../../../../domain/flight/entity/flight";
+import FlightModel from "../../../flight/sequelize/flight.model";
+import UserModel from "../../../user/repository/sequelize/user.model";
 
 @Table({
   tableName: "travel",
@@ -15,6 +26,16 @@ export default class TravelModel extends Model {
   @Column({ allowNull: false })
   declare destination: string;
 
+  @ForeignKey(() => UserModel)
+  @Column
+  declare user_id: string;
+
+  @HasMany(() => FlightModel, "travel_id")
+  declare flights: FlightModel[];
+
   @Column({ allowNull: false })
-  declare user_id: number;
+  declare start_date: Date;
+
+  @Column({ allowNull: false })
+  declare end_date: Date;
 }
