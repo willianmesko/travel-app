@@ -22,15 +22,10 @@ export default class User extends Entity {
   }
 
   get email(): string {
-    return this._email;
+    return this.email;
   }
 
   validate() {
     UserFactoryValidator.create().validate(this);
-  }
-
-  changeUsername(username: string) {
-    this._username = username;
-    this.validate();
   }
 }

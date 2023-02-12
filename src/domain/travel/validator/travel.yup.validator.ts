@@ -12,7 +12,7 @@ export default class TravelYupValidator implements ValidatorInterface<Travel> {
           id: yup.string().required("Id is required"),
           title: yup.string().required("Title is required"),
           destination: yup.string().required("Destination is required"),
-          userId: yup.string().required("userId is required"),
+          user_id: yup.string().required("user_id is required"),
           start_date: yup.date().notRequired(),
           end_date: yup.date().notRequired(),
         })
@@ -21,7 +21,7 @@ export default class TravelYupValidator implements ValidatorInterface<Travel> {
             id: entity.id,
             title: entity.title,
             destination: entity.destination,
-            userId: entity.userId,
+            user_id: entity.user_id,
           },
           {
             abortEarly: false,

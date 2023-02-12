@@ -3,7 +3,6 @@ import FlightFactory from "./flight.factory";
 describe("Flight factory unit test", () => {
   it("should create a flight", () => {
     let flight = FlightFactory.create(
-		"travel_id",
       "title",
       "Brasil",
       "Australia",

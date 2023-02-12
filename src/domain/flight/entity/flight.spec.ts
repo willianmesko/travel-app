@@ -5,7 +5,6 @@ describe("Flight unit tests", () => {
     expect(() => {
       let flight = new Flight(
         "",
-        "travel_id",
         "Bahamas",
         "Brasil",
         "Bahamas",
@@ -19,7 +18,6 @@ describe("Flight unit tests", () => {
     expect(() => {
       let flight = new Flight(
         "id",
-        "travel_id",
         "",
         "Brasil",
         "Bahamas",
@@ -31,15 +29,7 @@ describe("Flight unit tests", () => {
 
   it("should throw error when From and To is empty", () => {
     expect(() => {
-      let flight = new Flight(
-        "id",
-        "travel_id",
-        "title",
-        "",
-        "",
-        "Airport",
-        new Date()
-      );
+      let flight = new Flight("id", "title", "", "", "Airport", new Date());
     }).toThrowError("Flight: From is required");
   });
 });
