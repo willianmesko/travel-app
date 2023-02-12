@@ -1,8 +1,6 @@
-import "reflect-metadata";
 import express, { Express } from "express";
 import { Sequelize } from "sequelize-typescript";
 import TravelModel from "../travel/repository/sequelize/travel.model";
-import UserModel from "../user/repository/sequelize/user.model";
 
 import { travelRoute } from "./routes/travel.route";
 
@@ -18,7 +16,7 @@ async function setupDb() {
     storage: ":memory:",
     logging: false,
   });
-  await sequelize.addModels([TravelModel, UserModel]);
+  await sequelize.addModels([TravelModel]);
   await sequelize.sync();
 }
 setupDb();

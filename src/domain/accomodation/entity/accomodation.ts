@@ -3,7 +3,6 @@ import NotificationError from "../../@shared/notification/notification.error";
 import AccomodationValidatorFactory from "../factory/accomodation.validator.factory";
 
 export default class Accomodation extends Entity {
-  private _travel_id: string;
   private _title: string;
   private _start_date: Date;
   private _end_date: Date;
@@ -13,7 +12,6 @@ export default class Accomodation extends Entity {
 
   constructor(
     id: string,
-    travel_id: string,
     title: string,
     start_date: Date,
     end_date: Date,
@@ -23,7 +21,6 @@ export default class Accomodation extends Entity {
   ) {
     super();
     this._id = id;
-    this._travel_id = travel_id;
     this._title = title;
     this._start_date = start_date;
     this._end_date = end_date;
@@ -36,10 +33,6 @@ export default class Accomodation extends Entity {
     }
   }
 
-  get travel_id(): string {
-    return this._travel_id;
-  }
-
   get title(): string {
     return this._title;
   }
@@ -50,18 +43,6 @@ export default class Accomodation extends Entity {
 
   get end_date(): Date {
     return this._end_date;
-  }
-
-  get address(): string {
-    return this._address;
-  }
-
-  get map(): string {
-    return this._map;
-  }
-
-  get reference_url(): string {
-    return this._reference_url;
   }
 
   validate() {

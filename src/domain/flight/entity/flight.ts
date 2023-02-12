@@ -3,7 +3,6 @@ import NotificationError from "../../@shared/notification/notification.error";
 import FlightValidatorFactory from "../factory/flight.validator.factory";
 
 export default class Flight extends Entity {
-  private _travel_id: string;
   private _title: string;
   private _from: string;
   private _to: string;
@@ -14,7 +13,6 @@ export default class Flight extends Entity {
   private _reference_url: string;
   constructor(
     id: string,
-    travel_id: string,
     title: string,
     from: string,
     to: string,
@@ -26,7 +24,6 @@ export default class Flight extends Entity {
   ) {
     super();
     this._id = id;
-    this._travel_id = travel_id;
     this._title = title;
     this._from = from;
     this._to = to;
@@ -46,20 +43,8 @@ export default class Flight extends Entity {
     FlightValidatorFactory.create().validate(this);
   }
 
-  get id(): string {
-    return this._id;
-  }
-
-  get travel_id(): string {
-    return this._travel_id;
-  }
-
   get title(): string {
     return this._title;
-  }
-
-  get code(): string {
-    return this._code;
   }
 
   get from(): string {
@@ -72,14 +57,6 @@ export default class Flight extends Entity {
 
   get airport(): string {
     return this._airport;
-  }
-
-  get airline(): string {
-    return this._airline;
-  }
-
-  get reference_url(): string {
-    return this._reference_url;
   }
 
   get date(): Date {

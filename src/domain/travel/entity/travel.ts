@@ -6,15 +6,15 @@ import TravelValidatorFactory from "../factory/travel.validator.factory";
 export default class Travel extends Entity {
   private _title: string;
   private _destination: string;
-  private _userId: string;
-  private _start_date?: Date;
-  private _end_date?: Date;
+  private _user_id: string;
+  private start_date?: Date;
+  private end_date?: Date;
 
   constructor(
     id: string,
     title: string,
     destination: string,
-    userId: string,
+    user_id: string,
     start_date: Date,
     end_date: Date
   ) {
@@ -22,9 +22,9 @@ export default class Travel extends Entity {
     this._id = id;
     this._title = title;
     this._destination = destination;
-    this._userId = userId;
-    this._start_date = start_date;
-    this._end_date = end_date;
+    this._user_id = user_id;
+    this.start_date = start_date;
+    this.end_date = end_date;
     this.validate();
     if (this.notification.hasErrors()) {
       throw new NotificationError(this.notification.getErrors());
@@ -39,15 +39,8 @@ export default class Travel extends Entity {
     return this._destination;
   }
 
-  get userId(): string {
-    return this._userId;
-  }
-  get start_date(): Date {
-    return this._start_date;
-  }
-
-  get end_date(): Date {
-    return this._end_date;
+  get user_id(): string {
+    return this._user_id;
   }
 
   validate() {
