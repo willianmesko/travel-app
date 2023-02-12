@@ -9,6 +9,7 @@ export default class FlightYupValidator implements ValidatorInterface<Flight> {
         .object()
         .shape({
           id: yup.string().required("Id is required"),
+          travel_id: yup.string().required("travel_id is required"),
           title: yup.string().required("Title is required"),
           from: yup.string().required("From is required"),
           to: yup.string().required("To is required"),
@@ -21,6 +22,7 @@ export default class FlightYupValidator implements ValidatorInterface<Flight> {
         .validateSync(
           {
             id: entity.id,
+            travel_id: entity.travel_id,
             title: entity.title,
             from: entity.from,
             to: entity.to,
